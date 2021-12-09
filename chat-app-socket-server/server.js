@@ -4,6 +4,10 @@
 //запроса socket работают стабильно(всегда) без задержки
 //То есть не нужна ждать пока запрос будет доставлен и нам прийдет ответ
 //Благодаря express приложение привратиться в веб приложение
+
+/*Socket.IO — JavaScript библиотека для веб-приложений и обмена данными в реальном времени. Состоит из двух частей: 
+клиентской, которая запускается в браузере и серверной для node.js. Оба компонента имеют похожее API. */
+
 const app = require("express")();// помещаем в app express приложение
 const httpServer = require("http").createServer(app);//создаем сервер http
 const io = require("socket.io")(httpServer, {//создаем сокеты
@@ -50,7 +54,7 @@ io.on("connection", (socket) => {
     io.to(socketId).emit("new_message", data);
   });
 });
-
+//Слушаем порт
 httpServer.listen(PORT, () => {
   console.log(`Сервер прослушивает порт: ${PORT}`);
 });
